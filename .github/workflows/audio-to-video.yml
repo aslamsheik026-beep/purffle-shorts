@@ -1,0 +1,30 @@
+name: DIL MEHRAAB Audio to Video
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Check audio and video tools
+        run: |
+          python --version
+          ffmpeg -version
+          echo "DIL MEHRAAB cloud runner is ready."
+          echo "No video has been created or uploaded yet."
+          
